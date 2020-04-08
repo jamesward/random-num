@@ -1,7 +1,8 @@
-name := """random-num"""
+enablePlugins(PlayScala)
+disablePlugins(PlayFilters)
 
-version := "1.0-SNAPSHOT"
+name := "random-num"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
+scalaVersion := "2.13.1"
 
-scalaVersion := "2.11.1"
+libraryDependencies += guice
