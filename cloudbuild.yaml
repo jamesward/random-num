@@ -16,3 +16,4 @@ steps:
       - 'IMAGE_NAME=$REPO_NAME'
       - 'IMAGE_VERSION=$COMMIT_SHA'
       - 'REGION=us-central1'
+      - 'DEPLOY_OPTS=--execution-environment=gen2'
