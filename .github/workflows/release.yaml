@@ -14,6 +14,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build container
+      - name: Setup pack
         uses: buildpacks/github-actions/setup-pack@v5.0.0
+
+      - name: Publish container
         run: pack build --builder=paketobuildpacks/builder:base --publish ghcr.io/${{ github.actor }}/random-num
