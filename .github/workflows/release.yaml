@@ -1,0 +1,19 @@
+on: push
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Package Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build container
+        uses: buildpacks/github-actions/setup-pack@v5.0.0
+        run: pack build --builder=paketobuildpacks/builder:base --publish ghcr.io/${{ github.actor }}/random-num
